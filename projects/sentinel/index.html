@@ -1,0 +1,1236 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Surveillance</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
+</head>
+
+<body>
+    <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <div class="container-xl">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+                aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+                <a href="https://corychang.com">
+                    Cory Chang
+                </a>
+            </h1>
+    </header>
+    <div class="container-xl">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>
+                                Query
+                            </h4>
+                            <div>
+                                <pre><code>SecurityEvent
+ | where Computer == "timh-pc.contoso.local"
+ | where EventID == "12" or EventID == "42" or EventID == "1" or EventID == "1074"
+ | where TimeGenerated > todatetime('2022-11-29T00:00:00.0000000Z') 
+ | where TimeGenerated < todatetime('2022-11-30T00:00:00.0000000Z')
+</code></pre>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="runQueryOne()">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M7 4v16l13 -8z"></path>
+                                </svg> Run Query
+                            </button>
+                            <div id="spinnerOne" class="spinner-border text-blue" role="status"
+                                style="visibility: hidden;"></div>
+                            <div id="queryOne" style="display: none;">
+                                <hr>
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>
+                                            Response
+                                        </h4>
+
+                                        <div style="height: 300px; overflow-y: auto">
+                                            <pre><code><xmp>
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+  <System>
+    <Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}" />
+    <EventID>12</EventID>
+    <Version>0</Version>
+    <Level>4</Level>
+    <Task>1</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8000000000000080</Keywords>
+    <TimeCreated SystemTime="2022-11-29T08:15:08.0657000Z" />
+    <EventRecordID>11246</EventRecordID>
+    <Correlation />
+    <Execution ProcessID="4" ThreadID="8" />
+    <Channel>System</Channel>
+    <Computer>timh-pc</Computer>
+    <Security UserID="S-1-5-18" />
+  </System>
+  <EventData>
+    <Data Name="MajorVersion">10</Data>
+    <Data Name="MinorVersion">0</Data>
+    <Data Name="BuildVersion">22621</Data>
+    <Data Name="QfeVersion">900</Data>
+    <Data Name="ServiceVersion">0</Data>
+    <Data Name="BootMode">0</Data>
+    <Data Name="StartTime">2022-11-29T08:15:07.5000000Z</Data>
+  </EventData>
+</Event> 
+
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+  <System>
+    <Provider Name="Microsoft-Windows-Kernel-Power" Guid="{331c3b3a-2005-44c2-ac5e-77220c37d6b4}" />
+    <EventID>42</EventID>
+    <Version>3</Version>
+    <Level>4</Level>
+    <Task>64</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8000000000000404</Keywords>
+    <TimeCreated SystemTime="2022-11-29T11:15:07.1609851Z" />
+    <EventRecordID>11413</EventRecordID>
+    <Correlation />
+    <Execution ProcessID="4" ThreadID="172" />
+    <Channel>System</Channel>
+    <Computer>timh-pc</Computer>
+    <Security />
+  </System>
+  <EventData>
+    <Data Name="TargetState">6</Data>
+    <Data Name="EffectiveState">5</Data>
+    <Data Name="Reason">4</Data>
+    <Data Name="Flags">0</Data>
+    <Data Name="TransitionsToOn">1</Data>
+  </EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+  <System>
+    <Provider Name="Microsoft-Windows-Power-Troubleshooter" Guid="{cdc05e28-c449-49c6-b9d2-88cf761644df}" />
+    <EventID>1</EventID>
+    <Version>3</Version>
+    <Level>4</Level>
+    <Task>0</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8000000000000000</Keywords>
+    <TimeCreated SystemTime="2022-11-29T12:05:36.2767984Z" />
+    <EventRecordID>11433</EventRecordID>
+    <Correlation ActivityID="{436d83d4-6660-4cc1-a159-37c903d8280a}" />
+    <Execution ProcessID="6756" ThreadID="8372" />
+    <Channel>System</Channel>
+    <Computer>timh-pc</Computer>
+    <Security UserID="S-1-5-19" />
+  </System>
+  <EventData>
+    <Data Name="SleepTime">2022-11-29T11:15:07.1609851Z</Data>
+    <Data Name="WakeTime">2022-11-29T12:05:34.6687123Z</Data>
+    <Data Name="SleepDuration">17249</Data>
+    <Data Name="WakeDuration">2181</Data>
+    <Data Name="DriverInitDuration">2166</Data>
+    <Data Name="BiosInitDuration">6265</Data>
+    <Data Name="HiberWriteDuration">3428</Data>
+    <Data Name="HiberReadDuration">3004</Data>
+    <Data Name="HiberPagesWritten">433316</Data>
+    <Data Name="Attributes">1979728129</Data>
+    <Data Name="TargetState">6</Data>
+    <Data Name="EffectiveState">5</Data>
+    <Data Name="WakeSourceType">0</Data>
+    <Data Name="WakeSourceTextLength">0</Data>
+    <Data Name="WakeSourceText">
+    </Data>
+    <Data Name="WakeTimerOwnerLength">0</Data>
+    <Data Name="WakeTimerContextLength">0</Data>
+    <Data Name="NoMultiStageResumeReason">0</Data>
+    <Data Name="WakeTimerOwner">
+    </Data>
+    <Data Name="WakeTimerContext">
+    </Data>
+    <Data Name="CheckpointDuration">16</Data>
+  </EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Kernel-Power" Guid="{331c3b3a-2005-44c2-ac5e-77220c37d6b4}" />
+      <EventID>42</EventID>
+      <Version>3</Version>
+      <Level>4</Level>
+      <Task>64</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000404</Keywords>
+      <TimeCreated SystemTime="2022-11-29T13:12:56.1609851Z" />
+      <EventRecordID>11413</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="4" ThreadID="172" />
+      <Channel>System</Channel>
+      <Computer>timh-pc</Computer>
+      <Security />
+    </System>
+    <EventData>
+      <Data Name="TargetState">6</Data>
+      <Data Name="EffectiveState">5</Data>
+      <Data Name="Reason">4</Data>
+      <Data Name="Flags">0</Data>
+      <Data Name="TransitionsToOn">1</Data>
+    </EventData>
+  </Event>
+  
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Power-Troubleshooter" Guid="{cdc05e28-c449-49c6-b9d2-88cf761644df}" />
+      <EventID>1</EventID>
+      <Version>3</Version>
+      <Level>4</Level>
+      <Task>0</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2022-11-29T13:40:15.2767984Z" />
+      <EventRecordID>11433</EventRecordID>
+      <Correlation ActivityID="{436d83d4-6660-4cc1-a159-37c903d8280a}" />
+      <Execution ProcessID="6756" ThreadID="8372" />
+      <Channel>System</Channel>
+      <Computer>timh-pc</Computer>
+      <Security UserID="S-1-5-19" />
+    </System>
+    <EventData>
+      <Data Name="SleepTime">2022-11-29T13:12:56.1609851Z</Data>
+      <Data Name="WakeTime">2022-11-29T13:40:12.6687123Z</Data>
+      <Data Name="SleepDuration">17249</Data>
+      <Data Name="WakeDuration">2181</Data>
+      <Data Name="DriverInitDuration">2166</Data>
+      <Data Name="BiosInitDuration">6265</Data>
+      <Data Name="HiberWriteDuration">3428</Data>
+      <Data Name="HiberReadDuration">3004</Data>
+      <Data Name="HiberPagesWritten">433316</Data>
+      <Data Name="Attributes">1979728129</Data>
+      <Data Name="TargetState">6</Data>
+      <Data Name="EffectiveState">5</Data>
+      <Data Name="WakeSourceType">0</Data>
+      <Data Name="WakeSourceTextLength">0</Data>
+      <Data Name="WakeSourceText">
+      </Data>
+      <Data Name="WakeTimerOwnerLength">0</Data>
+      <Data Name="WakeTimerContextLength">0</Data>
+      <Data Name="NoMultiStageResumeReason">0</Data>
+      <Data Name="WakeTimerOwner">
+      </Data>
+      <Data Name="WakeTimerContext">
+      </Data>
+      <Data Name="CheckpointDuration">16</Data>
+    </EventData>
+  </Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+  <System>
+    <Provider Name="User32" Guid="{b0aa8734-56f7-41cc-b2f4-de228e98b946}" EventSourceName="User32" />
+    <EventID Qualifiers="32768">1074</EventID>
+    <Version>0</Version>
+    <Level>4</Level>
+    <Task>0</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8080000000000000</Keywords>
+    <TimeCreated SystemTime="2022-11-29T14:47:44.6322274Z" />
+    <EventRecordID>11403</EventRecordID>
+    <Correlation />
+    <Execution ProcessID="808" ThreadID="6064" />
+    <Channel>System</Channel>
+    <Computer>timh-pc</Computer>
+    <Security UserID="S-1-5-21-3354939824-1789687154-980910989-1001" />
+  </System>
+  <EventData>
+    <Data Name="param1">C:\Windows\system32\winlogon.exe (timh-pc)</Data>
+    <Data Name="param2">timh-pc</Data>
+    <Data Name="param3">No title for this reason could be found</Data>
+    <Data Name="param4">0x500ff</Data>
+    <Data Name="param5">power off</Data>
+    <Data Name="param6">
+    </Data>
+    <Data Name="param7">timh-pc\timh</Data>
+  </EventData>
+</Event>
+</xmp>                                  
+                                        </code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <button id="parsedOneBtn" type="button" class="btn btn-primary"
+                                            onclick="parseRespOne()">Parse
+                                            Response</button>
+
+                                        <div id="parsedOne" style="display: none;">
+                                            <h4>
+                                                Parsed Output
+                                            </h4>
+                                            <div class="card" style="height: 300px; overflow-y: auto">
+                                                <div class="card-body card-body-scrollable card-body-scrollable-shadow">
+                                                    <div class="divide-y">
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Startup: </strong>The device started at
+                                                                        08:15:07.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Sleep: </strong>The device slept at
+                                                                        11:15:07.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Sleep: </strong>The device woke up at
+                                                                        12:05:34.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Sleep: </strong>The device slept at
+                                                                        13:12:56.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Sleep: </strong>The device woke up at
+                                                                        13:40:12.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Shutdown: </strong>The device shutdown at
+                                                                        14:47:44.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>
+                                Query
+                            </h4>
+                            <div>
+                                <pre><code>SecurityEvent
+ | where Computer == "timh-pc.contoso.local"
+ | where EventID == "4688"
+ | where TimeGenerated > todatetime('2022-11-29T00:00:00.0000000Z') 
+ | where TimeGenerated < todatetime('2022-11-30T00:00:00.0000000Z')
+</code></pre>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="runQueryTwo()">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M7 4v16l13 -8z"></path>
+                                </svg> Run Query
+                            </button>
+                            <div id="spinnerTwo" class="spinner-border text-blue" role="status"
+                                style="visibility: hidden;"></div>
+                            <div id="queryTwo" style="display: none;">
+                                <hr>
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>
+                                            Response
+                                        </h4>
+
+                                        <div style="height: 300px; overflow-y: auto">
+                                            <pre><code><xmp>
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+  <System>
+    <Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" />
+    <EventID>4688</EventID>
+    <Version>2</Version>
+    <Level>0</Level>
+    <Task>13312</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8020000000000000</Keywords>
+    <TimeCreated SystemTime="2022-11-29T08:16:20.6113806Z" />
+    <EventRecordID>68791</EventRecordID>
+    <Correlation />
+    <Execution ProcessID="4" ThreadID="232" />
+    <Channel>Security</Channel>
+    <Computer>timh-pc</Computer>
+    <Security />
+  </System>
+  <EventData>
+    <Data Name="SubjectUserSid">S-1-5-18</Data>
+    <Data Name="SubjectUserName">-</Data>
+    <Data Name="SubjectDomainName">-</Data>
+    <Data Name="SubjectLogonId">0x3e7</Data>
+    <Data Name="NewProcessId">0x504</Data>
+    <Data Name="NewProcessName">C:\Users\timh\AppData\Local\Microsoft\Teams\current\Teams.exe</Data>
+    <Data Name="TokenElevationType">%%1936</Data>
+    <Data Name="ProcessId">0x498</Data>
+    <Data Name="CommandLine">
+    </Data>
+    <Data Name="TargetUserSid">S-1-0-0</Data>
+    <Data Name="TargetUserName">-</Data>
+    <Data Name="TargetDomainName">-</Data>
+    <Data Name="TargetLogonId">0x0</Data>
+    <Data Name="ParentProcessName">C:\Windows\System32\wininit.exe</Data>
+    <Data Name="MandatoryLabel">S-1-16-16384</Data>
+  </EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" />
+      <EventID>4688</EventID>
+      <Version>2</Version>
+      <Level>0</Level>
+      <Task>13312</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8020000000000000</Keywords>
+      <TimeCreated SystemTime="2022-11-29T08:24:39.6113806Z" />
+      <EventRecordID>68791</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="4" ThreadID="232" />
+      <Channel>Security</Channel>
+      <Computer>timh-pc</Computer>
+      <Security />
+    </System>
+    <EventData>
+      <Data Name="SubjectUserSid">S-1-5-18</Data>
+      <Data Name="SubjectUserName">-</Data>
+      <Data Name="SubjectDomainName">-</Data>
+      <Data Name="SubjectLogonId">0x3e7</Data>
+      <Data Name="NewProcessId">0x504</Data>
+      <Data Name="NewProcessName">"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"</Data>
+      <Data Name="TokenElevationType">%%1936</Data>
+      <Data Name="ProcessId">0x498</Data>
+      <Data Name="CommandLine">
+      </Data>
+      <Data Name="TargetUserSid">S-1-0-0</Data>
+      <Data Name="TargetUserName">-</Data>
+      <Data Name="TargetDomainName">-</Data>
+      <Data Name="TargetLogonId">0x0</Data>
+      <Data Name="ParentProcessName">C:\Windows\System32\wininit.exe</Data>
+      <Data Name="MandatoryLabel">S-1-16-16384</Data>
+    </EventData>
+  </Event>
+
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" />
+      <EventID>4688</EventID>
+      <Version>2</Version>
+      <Level>0</Level>
+      <Task>13312</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8020000000000000</Keywords>
+      <TimeCreated SystemTime="2022-11-29T08:31:27.6148832Z" />
+      <EventRecordID>68791</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="4" ThreadID="232" />
+      <Channel>Security</Channel>
+      <Computer>timh-pc</Computer>
+      <Security />
+    </System>
+    <EventData>
+      <Data Name="SubjectUserSid">S-1-5-18</Data>
+      <Data Name="SubjectUserName">-</Data>
+      <Data Name="SubjectDomainName">-</Data>
+      <Data Name="SubjectLogonId">0x3e7</Data>
+      <Data Name="NewProcessId">0x504</Data>
+      <Data Name="NewProcessName">"C:\Users\ccory\AppData\Local\Programs\Microsoft VS Code\Code.exe"</Data>
+      <Data Name="TokenElevationType">%%1936</Data>
+      <Data Name="ProcessId">0x498</Data>
+      <Data Name="CommandLine">
+      </Data>
+      <Data Name="TargetUserSid">S-1-0-0</Data>
+      <Data Name="TargetUserName">-</Data>
+      <Data Name="TargetDomainName">-</Data>
+      <Data Name="TargetLogonId">0x0</Data>
+      <Data Name="ParentProcessName">C:\Windows\System32\wininit.exe</Data>
+      <Data Name="MandatoryLabel">S-1-16-16384</Data>
+    </EventData>
+  </Event>
+
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" />
+      <EventID>4688</EventID>
+      <Version>2</Version>
+      <Level>0</Level>
+      <Task>13312</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8020000000000000</Keywords>
+      <TimeCreated SystemTime="2022-11-29T09:55:23.6148832Z" />
+      <EventRecordID>68791</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="4" ThreadID="232" />
+      <Channel>Security</Channel>
+      <Computer>timh-pc</Computer>
+      <Security />
+    </System>
+    <EventData>
+      <Data Name="SubjectUserSid">S-1-5-18</Data>
+      <Data Name="SubjectUserName">-</Data>
+      <Data Name="SubjectDomainName">-</Data>
+      <Data Name="SubjectLogonId">0x3e7</Data>
+      <Data Name="NewProcessId">0x504</Data>
+      <Data Name="NewProcessName">"C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE"</Data>
+      <Data Name="TokenElevationType">%%1936</Data>
+      <Data Name="ProcessId">0x498</Data>
+      <Data Name="CommandLine">
+      </Data>
+      <Data Name="TargetUserSid">S-1-0-0</Data>
+      <Data Name="TargetUserName">-</Data>
+      <Data Name="TargetDomainName">-</Data>
+      <Data Name="TargetLogonId">0x0</Data>
+      <Data Name="ParentProcessName">C:\Windows\System32\wininit.exe</Data>
+      <Data Name="MandatoryLabel">S-1-16-16384</Data>
+    </EventData>
+  </Event>
+
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" />
+      <EventID>4688</EventID>
+      <Version>2</Version>
+      <Level>0</Level>
+      <Task>13312</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8020000000000000</Keywords>
+      <TimeCreated SystemTime="2022-11-29T10:07:54.6148832Z" />
+      <EventRecordID>68791</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="4" ThreadID="232" />
+      <Channel>Security</Channel>
+      <Computer>timh-pc</Computer>
+      <Security />
+    </System>
+    <EventData>
+      <Data Name="SubjectUserSid">S-1-5-18</Data>
+      <Data Name="SubjectUserName">-</Data>
+      <Data Name="SubjectDomainName">-</Data>
+      <Data Name="SubjectLogonId">0x3e7</Data>
+      <Data Name="NewProcessId">0x504</Data>
+      <Data Name="NewProcessName">"C:\Program Files\Microsoft Office\root\Office16\OUTLOOK.EXE"</Data>
+      <Data Name="TokenElevationType">%%1936</Data>
+      <Data Name="ProcessId">0x498</Data>
+      <Data Name="CommandLine">
+      </Data>
+      <Data Name="TargetUserSid">S-1-0-0</Data>
+      <Data Name="TargetUserName">-</Data>
+      <Data Name="TargetDomainName">-</Data>
+      <Data Name="TargetLogonId">0x0</Data>
+      <Data Name="ParentProcessName">C:\Windows\System32\wininit.exe</Data>
+      <Data Name="MandatoryLabel">S-1-16-16384</Data>
+    </EventData>
+  </Event>
+
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" />
+      <EventID>4688</EventID>
+      <Version>2</Version>
+      <Level>0</Level>
+      <Task>13312</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8020000000000000</Keywords>
+      <TimeCreated SystemTime="2022-11-29T12:10:02.6148832Z" />
+      <EventRecordID>68791</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="4" ThreadID="232" />
+      <Channel>Security</Channel>
+      <Computer>timh-pc</Computer>
+      <Security />
+    </System>
+    <EventData>
+      <Data Name="SubjectUserSid">S-1-5-18</Data>
+      <Data Name="SubjectUserName">-</Data>
+      <Data Name="SubjectDomainName">-</Data>
+      <Data Name="SubjectLogonId">0x3e7</Data>
+      <Data Name="NewProcessId">0x504</Data>
+      <Data Name="NewProcessName">"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"</Data>
+      <Data Name="TokenElevationType">%%1936</Data>
+      <Data Name="ProcessId">0x498</Data>
+      <Data Name="CommandLine">
+      </Data>
+      <Data Name="TargetUserSid">S-1-0-0</Data>
+      <Data Name="TargetUserName">-</Data>
+      <Data Name="TargetDomainName">-</Data>
+      <Data Name="TargetLogonId">0x0</Data>
+      <Data Name="ParentProcessName">C:\Windows\System32\wininit.exe</Data>
+      <Data Name="MandatoryLabel">S-1-16-16384</Data>
+    </EventData>
+  </Event>
+
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" />
+      <EventID>4688</EventID>
+      <Version>2</Version>
+      <Level>0</Level>
+      <Task>13312</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8020000000000000</Keywords>
+      <TimeCreated SystemTime="2022-11-29T13:45:45.6148832Z" />
+      <EventRecordID>68791</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="4" ThreadID="232" />
+      <Channel>Security</Channel>
+      <Computer>timh-pc</Computer>
+      <Security />
+    </System>
+    <EventData>
+      <Data Name="SubjectUserSid">S-1-5-18</Data>
+      <Data Name="SubjectUserName">-</Data>
+      <Data Name="SubjectDomainName">-</Data>
+      <Data Name="SubjectLogonId">0x3e7</Data>
+      <Data Name="NewProcessId">0x504</Data>
+      <Data Name="NewProcessName">"C:\Program Files (x86)\Minecraft Launcher\MinecraftLauncher.exe"</Data>
+      <Data Name="TokenElevationType">%%1936</Data>
+      <Data Name="ProcessId">0x498</Data>
+      <Data Name="CommandLine">
+      </Data>
+      <Data Name="TargetUserSid">S-1-0-0</Data>
+      <Data Name="TargetUserName">-</Data>
+      <Data Name="TargetDomainName">-</Data>
+      <Data Name="TargetLogonId">0x0</Data>
+      <Data Name="ParentProcessName">C:\Windows\System32\wininit.exe</Data>
+      <Data Name="MandatoryLabel">S-1-16-16384</Data>
+    </EventData>
+  </Event>
+</xmp>                                  
+                                        </code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <button id="parsedTwoBtn" type="button" class="btn btn-primary"
+                                            onclick="parseRespTwo()">Parse
+                                            Response</button>
+
+                                        <div id="parsedTwo" style="display: none;">
+                                            <h4>
+                                                Parsed Output
+                                            </h4>
+                                            <div class="card" style="height: 300px; overflow-y: auto">
+                                                <div class="card-body card-body-scrollable card-body-scrollable-shadow">
+                                                    <div class="divide-y">
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Startup: </strong>The device started at
+                                                                        08:15:07.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Process: </strong>The process Teams.exe was started at
+                                                                        08:16:20.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Process: </strong>The process msedge.exe was started at
+                                                                        08:24:39.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Process: </strong>The process Code.exe was started at
+                                                                        08:31:27.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Process: </strong>The process EXCEL.EXE was started at
+                                                                        09:55:23.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Process: </strong>The process OUTLOOK.EXE was started at
+                                                                        10:07:54.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Sleep: </strong>The device slept at
+                                                                        11:15:07.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                             
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Sleep: </strong>The device woke up at
+                                                                        12:05:34.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                               
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Process: </strong>The process msedge.exe was started at
+                                                                        12:10:02.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Sleep: </strong>The device slept at
+                                                                        13:12:56.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                               
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Sleep: </strong>The device woke up at
+                                                                        13:40:12.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Process: </strong>The process MinecraftLauncher.exe was started at
+                                                                        13:45:45.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Shutdown: </strong>The device shutdown at
+                                                                        14:47:44.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>
+                                Query
+                            </h4>
+                            <div>
+                                <pre><code>GET https://graph.microsoft.com/v1.0/teams/8f39a280-7cee-42ba-87d6-995629f8221c/channels/getAllMessages?$top=10&$filter=lastModifiedDateTime gt 2020-06-04T18:03:11.591Z and lastModifiedDateTime lt 2020-06-05T21:00:09.413Z
+</code></pre>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="runQueryThree()">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M7 4v16l13 -8z"></path>
+                                </svg> Run Query
+                            </button>
+                            <div id="spinnerThree" class="spinner-border text-blue" role="status"
+                                style="visibility: hidden;"></div>
+                            <div id="queryThree" style="display: none;">
+                                <hr>
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>
+                                            Response
+                                        </h4>
+
+                                        <div style="height: 300px; overflow-y: auto">
+                                            <pre><code>
+
+                                        </code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <button id="parsedThreeBtn" type="button" class="btn btn-primary"
+                                            onclick="parseRespThree()">Parse
+                                            Response</button>
+
+                                        <div id="parsedThree" style="display: none;">
+                                            <h4>
+                                                Parsed Output
+                                            </h4>
+                                            <div class="card" style="height: 300px; overflow-y: auto">
+                                                <div class="card-body card-body-scrollable card-body-scrollable-shadow">
+                                                    <div class="divide-y">
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Startup: </strong>The device started at
+                                                                        08:15:07.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Process: </strong>The process Teams.exe was started at
+                                                                        08:16:20.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Process: </strong>The process msedge.exe was started at
+                                                                        08:24:39.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Process: </strong>The process Code.exe was started at
+                                                                        08:31:27.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Process: </strong>The process EXCEL.EXE was started at
+                                                                        09:55:23.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Process: </strong>The process OUTLOOK.EXE was started at
+                                                                        10:07:54.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Sleep: </strong>The device slept at
+                                                                        11:15:07.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                             
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Sleep: </strong>The device woke up at
+                                                                        12:05:34.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                               
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Process: </strong>The process msedge.exe was started at
+                                                                        12:10:02.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Sleep: </strong>The device slept at
+                                                                        13:12:56.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                               
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Sleep: </strong>The device woke up at
+                                                                        13:40:12.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Process: </strong>The process MinecraftLauncher.exe was started at
+                                                                        13:45:45.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                                <div class="col-auto align-self-center">
+                                                                    <div class="badge bg-primary"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="row">
+                                                                <div class="col-auto">
+                                                                    <span class="avatar">TI</span>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="text-truncate">
+                                                                        <strong>Shutdown: </strong>The device shutdown at
+                                                                        14:47:44.
+                                                                    </div>
+                                                                    <div class="text-muted">timh-pc.contoso.local</div>
+                                                                </div>
+                                                    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        async function runQueryOne() {
+            document.getElementById("queryOne").style.display = 'none';
+            document.getElementById("spinnerOne").style.visibility = 'visible';
+            await sleep(2000);
+            document.getElementById("queryOne").style.display = 'inline';
+            document.getElementById("spinnerOne").style.visibility = 'hidden';
+        }
+        async function parseRespOne() {
+            document.getElementById("parsedOneBtn").style.display = 'none';
+            document.getElementById("parsedOne").style.display = 'inline';
+        }
+
+        async function runQueryTwo() {
+            document.getElementById("queryTwo").style.display = 'none';
+            document.getElementById("spinnerTwo").style.visibility = 'visible';
+            await sleep(2000);
+            document.getElementById("queryTwo").style.display = 'inline';
+            document.getElementById("spinnerTwo").style.visibility = 'hidden';
+        }
+        async function parseRespTwo() {
+            document.getElementById("parsedTwoBtn").style.display = 'none';
+            document.getElementById("parsedTwo").style.display = 'inline';
+        }
+
+        async function runQueryThree() {
+            document.getElementById("queryThree").style.display = 'none';
+            document.getElementById("spinnerThree").style.visibility = 'visible';
+            await sleep(2000);
+            document.getElementById("queryThree").style.display = 'inline';
+            document.getElementById("spinnerThree").style.visibility = 'hidden';
+        }
+        async function parseRespThree() {
+            document.getElementById("parsedThreeBtn").style.display = 'none';
+            document.getElementById("parsedThree").style.display = 'inline';
+        }
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+</body>
+
+</html>
