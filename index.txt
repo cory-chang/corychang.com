@@ -1,6 +1,6 @@
-+------------------------------------------------------------------+
-|                            CORY CHANG                            |
-+------------------------------------------------------------------+
++------------------------------+
+|          CORY CHANG          |
++------------------------------+
 
 As a Strategic Security Consultant at Google Mandiant, Cory Chang
 leverages deep expertise in enterprise security to deliver holistic,
@@ -21,8 +21,8 @@ there, he studied briefly in the School of Security Studies at
 King's College London. He was also an Undergraduate Fellow with the
 Clements Center for National Security.
 
---------------------------------------------------------------------
+--------------------------------
 Contact:
   * Email    : cory@corychang.com
   * LinkedIn : https://www.linkedin.com/in/cory-chang/
---------------------------------------------------------------------
+--------------------------------
