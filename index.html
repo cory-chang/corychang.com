@@ -1,52 +1,72 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Cory Chang</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<style type="text/css">
+	<style>
+		html {
+			background-color: #FAF9F6;
+			color: #2D2D2D;
+			-webkit-font-smoothing: antialiased;
+		}
+
 		body {
-			margin: 10px auto;
-			max-width: 650px;
-			padding: 0px 5%;
-			font-size: 18px;
-			color: #373737;
-			line-height: 1.6;
-			font-family: palatino, serif;
+			margin: clamp(2.5rem, 8vh, 5rem) auto;
+			max-width: 60ch;
+			padding: 0 1.5rem;
+			font-family: "Iowan Old Style", Palatino, serif;
+			font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+			line-height: 1.68;
+		}
+
+		h1 {
+			margin: 0 0 2rem;
+			font-size: clamp(1.65rem, 1.4rem + 0.9vw, 2rem);
+			font-weight: 600;
+			letter-spacing: -0.015em;
+			line-height: 1.2;
+			color: #1A1A1A;
 		}
 
 		p {
-			text-align: justify;
+			margin: 0 0 1.35em;
 		}
 
 		a {
-			color: #373737;
+			color: inherit;
+			text-decoration: underline 1px #B8B4AA;
+			text-underline-offset: 3px;
 		}
 
-		h1,
-		h2,
-		h3 {
-			line-height: 1.3;
+		a:hover {
+			text-decoration-color: #1A1A1A;
+		}
+
+		.contact {
+			margin: 1.5rem 0 0;
+			font-size: 0.95rem;
+			color: #55524B;
 		}
 	</style>
 </head>
 
 <body>
-	<header>
-		<h1>Cory Chang</h1>
-	</header>
+	<h1>Cory Chang</h1>
+
 	<p>
-		As a Strategic Security Consultant at Google Mandiant, Cory Chang leverages deep expertise in enterprise security to deliver holistic, organization-wide assessments that reduce cyber risk and align security strategy with business objectives. He also excels in developing targeted programs to address high-impact security risk areas.
+		Cory Chang is a Strategic Security Consultant at Mandiant, part of Google, where he advises executive leadership and technical teams on building threat-informed security programs. He designs targeted defenses for high-impact threats and leads enterprise-wide assessments so organizations have a clear strategy that supports both business and security needs.
 	</p>
 	<p>
-He brings hands-on experience from previous roles at CrowdStrike, Antares Capital, and Kestra Financial, with a proven track record in building SOC and vulnerability management programs, developing custom automation tooling, and guiding global enterprises through security transformations.
+		Prior to joining Mandiant, he held security roles at CrowdStrike, Antares Capital, and Kestra Financial. Across those teams, he built SOC and vulnerability management programs from the ground up and engineered custom automation tools. He has also guided global enterprises through large-scale security transformations.
 	</p>
 	<p>
-He earned a B.S. in Computer Science with Highest Honors and a minor in Risk Management from the University of Texas at Austin. While there, he studied briefly in the School of Security Studies at King's College London. He was also an Undergraduate Fellow with the Clements Center for National Security.
+		He graduated from the University of Texas at Austin with a B.S. in Computer Science (Highest Honors) and a minor in Risk Management. While at UT, he was an Undergraduate Fellow at the Clements Center for National Security and studied briefly in the School of Security Studies at King's College London.
 	</p>
-	<p>
-He can be reached by <a href="mailto:cory@corychang.com" target="_blank">email</a> or on <a href="https://www.linkedin.com/in/cory-chang/" target="_blank">LinkedIn</a>.
+
+	<p class="contact">
+		Reach out by <a href="mailto:cory@corychang.com">email</a> or on <a href="https://www.linkedin.com/in/cory-chang/" target="_blank">LinkedIn</a>.
 	</p>
 </body>
 

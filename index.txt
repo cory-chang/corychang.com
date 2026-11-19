@@ -2,24 +2,24 @@
 |          CORY CHANG          |
 +------------------------------+
 
-As a Strategic Security Consultant at Google Mandiant, Cory Chang
-leverages deep expertise in enterprise security to deliver holistic,
-organization-wide assessments that reduce cyber risk and align
-security strategy with business objectives. He also excels in
-developing targeted programs to address high-impact security risk
-areas.
+Cory Chang is a Strategic Security Consultant at Mandiant, part of
+Google, where he advises executive leadership and technical teams
+on building threat-informed security programs. He designs targeted
+defenses for high-impact threats and leads enterprise-wide
+assessments so organizations have a clear strategy that supports
+both business and security needs.
 
-He brings hands-on experience from previous roles at CrowdStrike,
-Antares Capital, and Kestra Financial, with a proven track record in
-building SOC and vulnerability management programs, developing
-custom automation tooling, and guiding global enterprises through
-security transformations.
+Prior to joining Mandiant, he held security roles at CrowdStrike,
+Antares Capital, and Kestra Financial. Across those teams, he built
+SOC and vulnerability management programs from the ground up and
+engineered custom automation tools. He has also guided global
+enterprises through large-scale security transformations.
 
-He earned a B.S. in Computer Science with Highest Honors and a minor
-in Risk Management from the University of Texas at Austin. While
-there, he studied briefly in the School of Security Studies at
-King's College London. He was also an Undergraduate Fellow with the
-Clements Center for National Security.
+He graduated from the University of Texas at Austin with a B.S. in
+Computer Science (Highest Honors) and a minor in Risk Management.
+While at UT, he was an Undergraduate Fellow at the Clements Center
+for National Security and studied briefly in the School of Security
+Studies at King's College London.
 
 --------------------------------
 Contact:
